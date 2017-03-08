@@ -1,0 +1,32 @@
+$colorA: #d5d41a;
+$colorB: #d14d5f;
+$defaultColor: #ddd;
+
+body {
+  font-family: Verdana;
+}
+
+button {
+  padding: 10px;
+  background-color: $defaultColor;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.wrapper {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.test-image-wrapper {
+  height: 180px;
+  width: 270px;
+  margin: auto;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+}
