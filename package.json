@@ -1,0 +1,27 @@
+{
+  "name": "ab-testing",
+  "version": "0.0.1",
+  "description": "Program do przeprowadzania testów AB",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SowaProgramuje/AB-Testing.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SowaProgramuje/AB-Testing/issues"
+  },
+  "homepage": "https://github.com/SowaProgramuje/AB-Testing#readme",
+  "dependencies": {
+    "webpack": "^2.2.1"
+  },
+  "devDependencies": {
+    "css-loader": "^0.27.3",
+    "node-sass": "^4.5.0",
+    "sass-loader": "^6.0.3"
+  }
+}
