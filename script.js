@@ -1,3 +1,11 @@
+import './_style.scss';
+
+console.log('hello world');
+
+let slonce = 'super slonce';
+console.log(`Ale dzisiaj swieci ${slonce}`);
+
+
 // pure JavaScript
 function testColor(colorA, colorB) {
   var randomNumber = Math.random();
