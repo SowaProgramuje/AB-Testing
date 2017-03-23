@@ -64,3 +64,15 @@ function testDisplay(elementId) {
 }
 
 testDisplay('test-display');
+
+function testTextColor(colorA, colorB, elementId) {
+  var randomNumber = Math.random();
+  const testedElement = document.getElementById(elementId);
+  if (randomNumber < 0.5) {
+    testedElement.style.color = colorA;
+  } else {
+    testedElement.style.color = colorB;
+  }
+}
+
+testTextColor('#262673', '#004d00','test-text-color');
