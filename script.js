@@ -1,15 +1,9 @@
 import './_style.scss';
 
-console.log('hello world');
-
-let slonce = 'super slonce';
-console.log(`Ale dzisiaj swieci ${slonce}`);
-
-
 // pure JavaScript
-function testColor(colorA, colorB) {
+function testColor(colorA, colorB, elementId) {
   var randomNumber = Math.random();
-  const testedElement = document.getElementById("test-color");
+  const testedElement = document.getElementById(elementId);
   if (randomNumber < 0.5) {
     testedElement.style.backgroundColor = colorA;
   } else {
@@ -17,7 +11,7 @@ function testColor(colorA, colorB) {
   }
 }
 
-testColor('#d5d41a', '#d14d5f');
+testColor('#d5d41a', '#d14d5f', 'test-color');
 
 
 // jQuery:
@@ -34,9 +28,9 @@ testColor('#d5d41a', '#d14d5f');
 // testColor('#d5d41a', '#d14d5f');
 
 
-function testTekst(textA, textB) {
+function testTekst(textA, textB, elementId) {
   var randomNumber = Math.random();
-  const testedElement = document.getElementById("test-text");
+  const testedElement = document.getElementById(elementId);
   if (randomNumber < 0.5) {
     testedElement.innerHTML = textA;
   } else {
@@ -44,12 +38,12 @@ function testTekst(textA, textB) {
   }
 }
 
-testTekst('Text A - super header one', 'Text B - cool header two');
+testTekst('Text A - testing text', 'Text B - testing text', 'test-text');
 
 
-function testImage(imageSrcA, imageSrcB) {
+function testImage(imageSrcA, imageSrcB, elementId) {
   var randomNumber = Math.random();
-  const testedElement = document.getElementById("test-image");
+  const testedElement = document.getElementById(elementId);
   if (randomNumber < 0.5) {
     testedElement.src = imageSrcA;
   } else {
@@ -57,4 +51,16 @@ function testImage(imageSrcA, imageSrcB) {
   }
 }
 
-testImage('https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcToYkhgUMQlaPMIaTByj05ha3gcX1lbV7cvdq2ByjEHWZCzXv93', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7mHpvjE_LmXQdrYaG9FWA9NYTUHuSOD9gmtmfJNApVfpwicFY');
+testImage('https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcToYkhgUMQlaPMIaTByj05ha3gcX1lbV7cvdq2ByjEHWZCzXv93', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7mHpvjE_LmXQdrYaG9FWA9NYTUHuSOD9gmtmfJNApVfpwicFY', 'test-image');
+
+function testDisplay(elementId) {
+  var randomNumber = Math.random();
+  const testedElement = document.getElementById(elementId);
+  if (randomNumber < 0.5) {
+    testedElement.style.display = 'none';
+  } else {
+    testedElement.style.display = 'inline-block';
+  }
+}
+
+testDisplay('test-display');
