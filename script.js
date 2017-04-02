@@ -1,5 +1,5 @@
 import './_style.scss';
-import { testColor,  testTekst, testImage, testDisplay, testTextColor } from './ab-testing';
+import { testColor,  testTekst, testImage, testDisplay, testTextColor, testVideo } from './ab-testing';
 
 testColor('#d5d41a', '#d14d5f', 'test-color');
 
@@ -10,3 +10,5 @@ testImage('https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcToYkhgUMQlaPMIa
 testDisplay('test-display');
 
 testTextColor('#262673', '#004d00','test-text-color');
+
+testVideo('https://www.youtube.com/embed/a3ICNMQW7Ok', 'https://www.youtube.com/embed/iNJdPyoqt8U', 'test-video')

@@ -41,6 +41,10 @@ function testImage(imageSrcA, imageSrcB, elementId) {
     drawOneOption('src', imageSrcA, imageSrcB, elementId);
 }
 
+function testVideo(videoSrcA, videoSrcB, elementId) {
+    drawOneOption('src', videoSrcA, videoSrcB, elementId);
+}
+
 
 // function drawOneOption(whatToTest, optionA, optionB, elementId) {
 //     const testedElement = document.getElementById(elementId);
@@ -107,4 +111,4 @@ function testImage(imageSrcA, imageSrcB, elementId) {
 //   }
 // }
 
-export { testColor,  testTekst, testImage, testDisplay, testTextColor};
+export { testColor,  testTekst, testImage, testDisplay, testTextColor, testVideo};
