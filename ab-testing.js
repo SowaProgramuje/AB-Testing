@@ -41,10 +41,13 @@ function testImage(imageSrcA, imageSrcB, elementId) {
     drawOneOption('src', imageSrcA, imageSrcB, elementId);
 }
 
+function testIframe(iframeSrcA, iframeSrcB, elementId) {
+    drawOneOption('src', iframeSrcA, iframeSrcB, elementId);
+}
+
 function testVideo(videoSrcA, videoSrcB, elementId) {
     drawOneOption('src', videoSrcA, videoSrcB, elementId);
 }
-
 
 // function drawOneOption(whatToTest, optionA, optionB, elementId) {
 //     const testedElement = document.getElementById(elementId);
@@ -111,4 +114,4 @@ function testVideo(videoSrcA, videoSrcB, elementId) {
 //   }
 // }
 
-export { testColor,  testTekst, testImage, testDisplay, testTextColor, testVideo};
+export { testColor,  testTekst, testImage, testDisplay, testTextColor, testIframe, testVideo};
