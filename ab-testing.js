@@ -5,9 +5,9 @@ function drawOneCssProperty(whatToTest, optionA, optionB, elementId) {
   const testedElement = document.getElementById(elementId);
   var randomNumber = Math.random();
   if (randomNumber < 0.5) {
-    testedElement.css(whatToTest, optionA);
+    testedElement.style[whatToTest] = optionA;
   } else {
-    testedElement.css(whatToTest, optionB);
+    testedElement.style[whatToTest] = optionB;
   }
 }
 
@@ -15,9 +15,9 @@ function drawOneOption(whatToTest, optionA, optionB, elementId) {
   const testedElement = document.getElementById(elementId);
   var randomNumber = Math.random();
   if (randomNumber < 0.5) {
-    testedElement.whatToTest = optionA;
+    testedElement[whatToTest] = optionA;
   } else {
-    testedElement.whatToTest = optionB;
+    testedElement[whatToTest] = optionB;
   }
 }
 
