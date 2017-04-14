@@ -49,4 +49,20 @@ function testVideo(videoSrcA, videoSrcB, elementId) {
     drawOneOption('src', videoSrcA, videoSrcB, elementId);
 }
 
+var userInfo = {
+
+    timeOpened:new Date(),
+    timezone:(new Date()).getTimezoneOffset()/60,
+
+    };
+
+console.log(userInfo);
+var userAgentLanguage = navigator.language;
+var userAgent = navigator.userAgent;
+var sizeScreenW = screen.width;
+var sizeScreenH = screen.height;
+
+console.log(userAgent, userAgentLanguage, sizeScreenH, sizeScreenW);
+
+
 export { testColor,  testTekst, testImage, testDisplay, testTextColor, testIframe, testVideo};
