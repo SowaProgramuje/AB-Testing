@@ -50,19 +50,29 @@ function testVideo(videoSrcA, videoSrcB, elementId) {
 }
 
 var userInfo = {
-
     timeOpened:new Date(),
     timezone:(new Date()).getTimezoneOffset()/60,
-
-    };
+    userLanguage: navigator.language,
+    WindowWidth: window.innerWidth,
+    WindowHeight: window.innerHeight,
+    ScreenWidth: screen.width,
+    ScreenHeight: screen.height,
+    operationSystem: navigator.platform,
+    userAgent: navigator.userAgent,
+    isChome: !!window.chrome && !!window.chrome.webstore,
+    isFirefox: typeof InstallTrigger !== 'undefined',
+    isSafari: /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification),
+    
+};
 
 console.log(userInfo);
-var userAgentLanguage = navigator.language;
-var userAgent = navigator.userAgent;
-var sizeScreenW = screen.width;
-var sizeScreenH = screen.height;
 
-console.log(userAgent, userAgentLanguage, sizeScreenH, sizeScreenW);
+function eventLister(testesElementId) { 
+    document.getElementById(testesElementId).addEventListener("click", addToLocalStorage)
+};
 
+function addToLocalStorage() {
+
+};
 
 export { testColor,  testTekst, testImage, testDisplay, testTextColor, testIframe, testVideo};
