@@ -67,9 +67,6 @@ var userInfo = {
 
 console.log(userInfo);
 
-
-
-
 function eventLister(testesElementId) { 
     document.getElementById(testesElementId).addEventListener("click", addToLocalStorage)
 };
