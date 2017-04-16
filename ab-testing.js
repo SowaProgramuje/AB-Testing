@@ -62,7 +62,7 @@ var userInfo = {
     isChome: !!window.chrome && !!window.chrome.webstore,
     isFirefox: typeof InstallTrigger !== 'undefined',
     isSafari: /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification),
-    
+
 };
 
 console.log(userInfo);
@@ -73,6 +73,13 @@ function eventLister(testesElementId) {
 
 function addToLocalStorage() {
 
+};
+
+function testInOneSession() {
+    if(sessionStorage.getItem('abTesting') != 'tested'){
+        console.log('Testing now');
+        sessionStorage.setItem('abTesting','tested');
+    }
 };
 
 export { testColor,  testTekst, testImage, testDisplay, testTextColor, testIframe, testVideo};
