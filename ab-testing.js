@@ -4,10 +4,15 @@
 function drawOneCssProperty(whatToTest, optionA, optionB, elementId) {
   const testedElement = document.getElementById(elementId);
   var randomNumber = Math.random();
+  localStorage.setItem('testedElement', testedElement);
   if (randomNumber < 0.5) {
     testedElement.style[whatToTest] = optionA;
+    localStorage.setItem('testResult','optionA');
+    console.log(optionA);
   } else {
     testedElement.style[whatToTest] = optionB;
+    localStorage.setItem('testResult','optionB'); 
+    console.log(optionB);
   }
 }
 
@@ -59,7 +64,7 @@ var userInfo = {
     ScreenHeight: screen.height,
     operationSystem: navigator.platform,
     userAgent: navigator.userAgent,
-    isChome: !!window.chrome && !!window.chrome.webstore,
+    isChrome: !!window.chrome && !!window.chrome.webstore,
     isFirefox: typeof InstallTrigger !== 'undefined',
     isSafari: /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification),
 
@@ -68,11 +73,9 @@ var userInfo = {
 console.log(userInfo);
 
 function eventLister(testesElementId) { 
-    document.getElementById(testesElementId).addEventListener("click", addToLocalStorage)
-};
-
-function addToLocalStorage() {
-
+    document.getElementById(testesElementId).addEventListener('click', function() {
+       localStorage.setItem('clickedElement', testesElementId);
+    });
 };
 
 function testInOneSession() {
@@ -81,5 +84,9 @@ function testInOneSession() {
         sessionStorage.setItem('abTesting','tested');
     }
 };
+
+
+
+eventLister('test-color');
 
 export { testColor,  testTekst, testImage, testDisplay, testTextColor, testIframe, testVideo};
