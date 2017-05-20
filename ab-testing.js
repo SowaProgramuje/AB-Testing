@@ -1,4 +1,14 @@
 // A library for A/B testing
+var xlMin = 1200;
+var lgMax = 1199;
+var lgMin = 992;
+var mdMax = 991;
+var mdMin = 768;
+var smMax = 767;
+var smMin = 576;
+var xsMax = 575;
+var xsMin = 0;
+
 var userInfo = {
     timeOpened:new Date(),
     timezone:(new Date()).getTimezoneOffset()/60,
@@ -49,6 +59,13 @@ var userInfo = {
 
 console.log(userInfo);
 
+function eventLister(testesElementId) { 
+    document.getElementById(testesElementId).addEventListener('click', function() {
+       localStorage.setItem('clickedElement', testesElementId);
+    });
+};
+
+
 function drawOneCssProperty(whatToTest, optionA, optionB, elementId) {
   const testedElement = document.getElementById(elementId);
   var randomNumber = Math.random();
@@ -62,6 +79,7 @@ function drawOneCssProperty(whatToTest, optionA, optionB, elementId) {
     localStorage.setItem('testResult', 'optionB'); 
     console.log(optionB);
   }
+  eventLister(elementId);
 }
 
 function drawOneOption(whatToTest, optionA, optionB, elementId) {
@@ -75,14 +93,8 @@ function drawOneOption(whatToTest, optionA, optionB, elementId) {
     testedElement[whatToTest] = optionB;
     localStorage.setItem('testResult', 'optionB');
   }
+  eventLister(elementId);
 }
-
-
-function eventLister(testesElementId) { 
-    document.getElementById(testesElementId).addEventListener('click', function() {
-       localStorage.setItem('clickedElement', testesElementId);
-    });
-};
 
 function testInOneSession() {
     if(sessionStorage.getItem('abTesting') != 'tested'){
@@ -91,14 +103,21 @@ function testInOneSession() {
     }
 };
 
-// function conditionalTesting() {
-//     if () {
+function testOnScreensSmallerThan(screenSize) {
+    if (ScreenWidth < screenSize) {
 
-//     }
-// }
+    } else {
+        localStorage.setItem('testResult', 'Not tested - too big screen');
+    }
+}
 
-eventLister('test-color');
-
+function testOnScreensLargerThan(screenSize) {
+    if (ScreenWidth < screenSize) {
+        
+    } else {
+        localStorage.setItem('testResult', 'Not tested - too small screen');
+    }
+}
 
 function testColor(colorA, colorB, elementId) {
     console.log(9)
