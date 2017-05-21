@@ -9,6 +9,13 @@ var smMin = 576;
 var xsMax = 575;
 var xsMin = 0;
 
+function testInOneSession() {
+    if(sessionStorage.getItem('abTesting') != 'tested'){
+        console.log('Testing now');
+        sessionStorage.setItem('abTesting','tested');
+    }
+};
+
 function detectUserAgent() { 
     var userAgent;
      if(!!window.chrome && !!window.chrome.webstore) {
@@ -39,7 +46,11 @@ var userInfo = {
     userAgent: detectUserAgent(),
 };
 
-console.log(userInfo);
+function userInfoStorage() {
+    localStorage.setItem('userInfo', userInfo);
+}
+
+// console.log(userInfo);
 
 function eventLister(testesElementId) { 
     document.getElementById(testesElementId).addEventListener('click', function() {
@@ -78,14 +89,7 @@ function drawOneOption(whatToTest, optionA, optionB, elementId) {
   eventLister(elementId);
 }
 
-function testInOneSession() {
-    if(sessionStorage.getItem('abTesting') != 'tested'){
-        console.log('Testing now');
-        sessionStorage.setItem('abTesting','tested');
-    }
-};
-
-function testOnScreensBetweenResolution(minSreenWidth, maxSreenWidth, functionToTest) {
+function testOnScreensBetweenWidths(minSreenWidth, maxSreenWidth, functionToTest) {
     if (screenWidth > minSreenWidth && screenWidth < maxSreenWidth) {
         functionToTest();
     } else {
