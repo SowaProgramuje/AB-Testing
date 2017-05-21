@@ -101,7 +101,6 @@ function testOnParticularUserAgent(testOnThisUserAgent, functionToTest) {
     }
 }
 
-
 function testOnParticularUserAgent(testOnThisUserAgent) {
     if (a === testOnThisUserAgent.toLowerCase()) {
         console.log('hurra')
