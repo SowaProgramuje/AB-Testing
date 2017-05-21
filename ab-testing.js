@@ -13,49 +13,31 @@ var userInfo = {
     timeOpened:new Date(),
     timezone:(new Date()).getTimezoneOffset()/60,
     userLanguage: navigator.language,
-    WindowWidth: window.innerWidth,
-    WindowHeight: window.innerHeight,
-    ScreenWidth: screen.width,
-    ScreenHeight: screen.height,
+    windowWidth: window.innerWidth,
+    windowHeight: window.innerHeight,
+    screenWidth: screen.width,
+    screenHeight: screen.height,
     operationSystem: navigator.platform,
-    userAgent: navigator.userAgent,
-    isChrome: !!window.chrome && !!window.chrome.webstore,
-    isFirefox: typeof InstallTrigger !== 'undefined',
-    isSafari: /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification),
-    isOpera: (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0
-
-
+    userAgent: detectUserAgent(),
 };
 
- // isIE: /*@cc_on!@*/false || !!document.documentMode,
-//      isEdge: !isIE && !!window.StyleMedia
-
-// function detectUserAgent() { 
-//     var userAgent;
-//      if(!!window.chrome && !!window.chrome.webstore === true) {
-//         userAgent = 'Chrome';
-//      } else if(typeof InstallTrigger !== 'undefined') {
-//         userAgent = 'Firefox';
-//      } else if((!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0) {
-//         userAgent = 'Opera';
-//     //  } else if( ) {
-//     //     userAgent = 'IE';
-//      } else if(!isIE && !!window.StyleMedia === true) {
-//         userAgent = 'Edge';
-//     //  } else if( ) {
-//     //     userAgent = 'Safari';
-//      } else {
-//         alert('unknown');
-//      }
-// };
-
-// Opera 8.0+
-// Firefox 1.0+
-// Safari 3.0+ "[object HTMLElementConstructor]" 
-// Internet Explorer 6-11
-// Edge 20+
-// Chrome 1+
-// Blink engine detection
+function detectUserAgent() { 
+    var userAgent;
+     if(!!window.chrome && !!window.chrome.webstore) {
+        userAgent = 'chrome';
+     } else if(typeof InstallTrigger !== 'undefined') {
+        userAgent = 'firefox';
+     } else if((!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0) {
+        userAgent = 'opera';
+     } else if(!isIE && !!window.StyleMedia) {
+        userAgent = 'edge';
+     } else if(/constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification)) {
+        userAgent = 'safari';
+     } else {
+        userAgent = 'unknown';
+     }
+     return userAgent;
+};
 
 console.log(userInfo);
 
@@ -103,19 +85,27 @@ function testInOneSession() {
     }
 };
 
-function testOnScreensSmallerThan(screenSize) {
-    if (ScreenWidth < screenSize) {
-
+function testOnScreensBetweenResolution(minSreenResolution, maxSreenResolution, functionToTest) {
+    if (screenWidth > minSreenResolution && screenWidth < maxSreenResolution) {
+        functionToTest();
     } else {
-        localStorage.setItem('testResult', 'Not tested - too big screen');
+        localStorage.setItem('testResult', 'Not tested - too small screen');
     }
 }
 
-function testOnScreensLargerThan(screenSize) {
-    if (ScreenWidth < screenSize) {
-        
+function testOnParticularUserAgent(testOnThisUserAgent, functionToTest) {
+    if (detectUserAgent() === testOnThisUserAgent.toLowerCase()) {
+        functionToTest();
     } else {
-        localStorage.setItem('testResult', 'Not tested - too small screen');
+        localStorage.setItem('testResult', 'not testes on' );
+    }
+}
+
+function testOnParticularUserAgent(testOnThisUserAgent) {
+    if (a === testOnThisUserAgent.toLowerCase()) {
+        console.log('hurra')
+    } else {
+        localStorage.setItem('testResult', 'not testes on' );
     }
 }
 
@@ -148,4 +138,4 @@ function testVideo(videoSrcA, videoSrcB, elementId) {
     drawOneOption('src', videoSrcA, videoSrcB, elementId);
 }
 
-export { testColor,  testTekst, testImage, testDisplay, testTextColor, testIframe, testVideo};
+export { testColor,  testTekst, testImage, testDisplay, testTextColor, testIframe, testVideo, eventLister, testInOneSession, testOnScreensBetweenResolution};
