@@ -9,18 +9,6 @@ var smMin = 576;
 var xsMax = 575;
 var xsMin = 0;
 
-var userInfo = {
-    timeOpened:new Date(),
-    timezone:(new Date()).getTimezoneOffset()/60,
-    userLanguage: navigator.language,
-    windowWidth: window.innerWidth,
-    windowHeight: window.innerHeight,
-    screenWidth: screen.width,
-    screenHeight: screen.height,
-    operationSystem: navigator.platform,
-    userAgent: detectUserAgent(),
-};
-
 function detectUserAgent() { 
     var userAgent;
      if(!!window.chrome && !!window.chrome.webstore) {
@@ -37,6 +25,18 @@ function detectUserAgent() {
         userAgent = 'unknown';
      }
      return userAgent;
+};
+
+var userInfo = {
+    timeOpened:new Date(),
+    timezone:(new Date()).getTimezoneOffset()/60,
+    userLanguage: navigator.language,
+    windowWidth: window.innerWidth,
+    windowHeight: window.innerHeight,
+    screenWidth: screen.width,
+    screenHeight: screen.height,
+    operationSystem: navigator.platform,
+    userAgent: detectUserAgent(),
 };
 
 console.log(userInfo);
@@ -85,11 +85,11 @@ function testInOneSession() {
     }
 };
 
-function testOnScreensBetweenResolution(minSreenResolution, maxSreenResolution, functionToTest) {
-    if (screenWidth > minSreenResolution && screenWidth < maxSreenResolution) {
+function testOnScreensBetweenResolution(minSreenWidth, maxSreenWidth, functionToTest) {
+    if (screenWidth > minSreenWidth && screenWidth < maxSreenWidth) {
         functionToTest();
     } else {
-        localStorage.setItem('testResult', 'Not tested - too small screen');
+        localStorage.setItem('testResult', 'width condition not met - not tested');
     }
 }
 
@@ -97,20 +97,11 @@ function testOnParticularUserAgent(testOnThisUserAgent, functionToTest) {
     if (detectUserAgent() === testOnThisUserAgent.toLowerCase()) {
         functionToTest();
     } else {
-        localStorage.setItem('testResult', 'not testes on' );
-    }
-}
-
-function testOnParticularUserAgent(testOnThisUserAgent) {
-    if (a === testOnThisUserAgent.toLowerCase()) {
-        console.log('hurra')
-    } else {
-        localStorage.setItem('testResult', 'not testes on' );
+        localStorage.setItem('testResult', 'unknown browser - test failed' );
     }
 }
 
 function testColor(colorA, colorB, elementId) {
-    console.log(9)
     drawOneCssProperty('backgroundColor', colorA, colorB, elementId);
 }
 
