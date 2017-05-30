@@ -13,7 +13,7 @@ function testInOneSession() {
     if(sessionStorage.getItem('abTesting') != 'tested'){
         console.log('Testing now');
         sessionStorage.setItem('abTesting','tested');
-    }
+    } 
 };
 
 function detectUserAgent() { 
@@ -50,14 +50,11 @@ function userInfoStorage() {
     localStorage.setItem('userInfo', userInfo);
 }
 
-// console.log(userInfo);
-
 function eventLister(testesElementId) { 
     document.getElementById(testesElementId).addEventListener('click', function() {
        localStorage.setItem('clickedElement', testesElementId);
     });
 };
-
 
 function drawOneCssProperty(whatToTest, optionA, optionB, elementId) {
   const testedElement = document.getElementById(elementId);

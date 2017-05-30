@@ -14,3 +14,8 @@ testTextColor('#262673', '#004d00','test-text-color');
 testIframe('https://www.youtube.com/embed/a3ICNMQW7Ok', 'https://www.youtube.com/embed/iNJdPyoqt8U', 'test-iframe');
 
 testVideo('http://mazwai.com/system/posts/videos/000/000/223/preview_mp4_3/lodewijk-van-eekhout_wiffling-grayleg-goose.mp4?1476537792', 'http://mazwai.com/system/posts/videos/000/000/202/preview_mp4_2/live-aloha.mp4?1446407106', 'test-video');
+
+eventLister('test-color');
+
+eventLister('test-text');
+
